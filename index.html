@@ -5,11 +5,20 @@
         <link rel="stylesheet" href="style.css" type="text/css" media="all">
         <link rel="shorcut icon" type="image/x-icon" href="slike/icon.png">
     </head>
-    <body onload="init()" class="ozadje">
+    <body onload="draw()" class="ozadje">
         <div class="okvir">
-            <div class="tockeCas">
-                <p>Točke: <mark id="tocke">0</mark></p> <!--tocke-->
-                <p>Čas: <span id="cas">00:00</span></p> <!--cas -->
+            <div class="leva">
+            <div class="tocke">
+                <div class="tockeCas">
+                    <br>
+                    <p>Točke: <mark id="tocke">0</mark></p> <!--tocke-->
+                    <p>Čas: <span id="cas">00:00</span></p> <!--cas -->
+                    
+                </div>
+            </div>
+                <div class="slika">
+
+                </div>
             </div>
             <div class="kanvas">
                 <div class="innerKanvas">
@@ -17,7 +26,7 @@
                         style="border: 2px solid black;"></canvas>
                 </div>
                 <div class="buttons">
-                    <div id="play">
+                    <div id="play" onclick="init()">
                         Play
                     </div>
                     <div id="restart">
