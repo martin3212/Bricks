@@ -29,8 +29,8 @@
                     <div id="play" onclick="init()">
                         Play
                     </div>
-                    <div id="restart">
-                        Restart
+                    <div id="restart" onclick="restart()" >
+                        Reset
                     </div>
                 </div>
             </div>
@@ -82,7 +82,11 @@
 
         //boolean za start
         var start = true;
-
+        
+        function restart(){
+            window.location.reload();
+            document.getElementById("play").click();
+        }
         function init() {
             canvas = document.getElementById('canvas');
             ctx = canvas.getContext('2d');
@@ -151,8 +155,9 @@
                 bricks[row][col] = 0;
                 tocke += 1; //stevec tock
                 $("#tocke").html(tocke); //obnovi stevec tock
-                if(tocke>35){
-                    
+                if(tocke>((NROW*NCOLS)-1)){
+                    clearInterval(intervalId);
+                    clear();
                 }
             }
             if (x + dx > WIDTH - r || x + dx < 0 + r)
@@ -169,12 +174,7 @@
                     clearInterval(intervalId);
                     console.log("test");
             }
-            /*
-            if(tocke>35){
-
-
-                        }
-            */
+            
             
 
             x += dx;
