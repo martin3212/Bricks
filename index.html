@@ -8,6 +8,9 @@
     <body onload="draw()" class="ozadje">
         <div class="okvir">
             <div class="leva">
+                <div class="naslovbob">
+
+                </div>
             <div class="tocke">
                 <div class="tockeCas">
                     <br>
@@ -30,7 +33,7 @@
                         Play
                     </div>
                     <div id="restart" onclick="restart()" >
-                        Reset
+                        Restart
                     </div>
                 </div>
             </div>
@@ -83,10 +86,34 @@
         //boolean za start
         var start = true;
         
-        function restart(){
-            window.location.reload();
-            document.getElementById("play").click();
-        }
+        function restart() {
+    clearInterval(intervalId); // Stop the existing game loop
+    clear(); // Clear the canvas for fresh drawing
+
+    // Reset ball position and velocity
+    x = 180; // Original x position
+    y = 300; // Original y position
+    dx = 2;  // Initial horizontal velocity
+    dy = 4;  // Initial vertical velocity
+
+    // Reset paddle to the center position
+    init_paddle();
+
+    // Reset bricks
+    initbricks();
+
+    // Reset score and timer
+    tocke = 0;
+    $("#tocke").html(tocke); // Reset score display
+    sekunde = 0; // Reset seconds
+    izpisTimer = "00:00"; // Reset timer display
+    $("#cas").html(izpisTimer);
+
+    // Start the game again
+    init();
+}
+
+
         function init() {
             canvas = document.getElementById('canvas');
             ctx = canvas.getContext('2d');
@@ -113,11 +140,11 @@
             izpisTimer = "00:00";
             $("#cas").html(izpisTimer); // Display initial timer
         }
-
+        
         function draw() {
             clear();
             circle(x, y, 10);
-
+            
             //premik ploscice levo in desno
             if (rightDown) {
                 if ((paddlex + paddlew) < WIDTH) {
@@ -192,6 +219,7 @@
                 izpisTimer = "00:00";
                 $("#cas").html(izpisTimer);
             }
+           
         }
         var koncniCas;
 
